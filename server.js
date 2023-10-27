@@ -19,9 +19,6 @@ async function connectToMongoDB(){
         console.log(error);
     } finally {
         db = connectedClient.db('Olea');
-        app.listen(PORT, () => {
-            console.log(`Dan's Server is listening on port ${PORT}`);
-        })        
     }
 }
 connectToMongoDB();
@@ -70,3 +67,6 @@ app.post('/editSpecial', (request, response) => {
     })
 })
 
+app.listen(PORT, () => {
+    console.log(`Dan's Server is listening on port ${PORT}`);
+})        
