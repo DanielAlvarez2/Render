@@ -18,7 +18,10 @@ async function connectToMongoDB(){
     } catch (error) {
         console.log(error);
     } finally {
-        db = connectedClient.db('Olea')
+        db = connectedClient.db('Olea');
+        app.listen(PORT, () => {
+            console.log(`Dan's Server is listening on port ${PORT}`);
+        })        
     }
 }
 connectToMongoDB();
@@ -27,7 +30,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.get('/', (request, response) =>{
-    db.collection('Specials').find().toArray()
+    db.collection('Specials: Appetizers').find().toArray()
     .then(data => {
         response.render('index.ejs', {info: data})
     })
@@ -67,6 +70,3 @@ app.post('/editSpecial', (request, response) => {
     })
 })
 
-app.listen(PORT, () => {
-    console.log(`Dan's Server is listening on port ${PORT}`);
-})
