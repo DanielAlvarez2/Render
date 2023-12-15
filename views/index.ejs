@@ -2,71 +2,229 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olea Specials</title>
-    <script src="https://kit.fontawesome.com/21ef82ed30.js" crossorigin="anonymous"></script>
-    <style>
-        .del, .edit{
-            cursor:pointer;
-            font-size:20px;
-        }
-        .del{
-            color:red;
-        }
-        .edit{
-            color:rgb(183, 183, 0);
-        }
-        .special{
-            margin-bottom: 20px;
-        }
-    </style>
+    <title>Clone Dinner Menu</title>
+    <script
+      src="https://kit.fontawesome.com/21ef82ed30.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="clone.css">
 </head>
+
+
+
+
 <body>
-    <h1>Olea Specials!!x</h1>
-    <ul class="specials">
-    <% for(let i=0; i<info.length;i++){%>
-        <li class="special">
-            <div><%= info[i]._id %></div>
-            <div><%= info[i].category %></div>
-            <div><%= info[i].name %></div>
-            <div><%= info[i].description %></div>
-            <div><%= info[i].price %></div>
-            <div><%= info[i].allergies %></div>
-            <span class="del"><i class="fa-solid fa-trash-can"></i> Delete</span>&nbsp;&nbsp;
-            <span class="edit"><i class="fa-solid fa-pencil"></i> Edit</span>
-        </li>
-    <% } %>
+
+<div id="wrapper" style="
+    display:grid;
+    place-content: center;
+    width:100%;
+    ">
+
+<div id="content" style="">
+
+    <div id="nav-bar">
+    <span id="logo" style="font-size:75px;">olea</span>
+    <span id="nav" style="padding-left:50px;">
+        <span>home</span>
+        <span>info</span>
+        <span>menus</span>
+        <span>press</span>
+        <span>gift cards</span>
+        <span>newsletter</span>
+        <span>reservations</span>
+    </span>
+    <span id="socials" style="padding-left:100px;">
+        <span><i class="fa-brands fa-facebook-f"></i></span>
+        <span><i class="fa-brands fa-twitter"></i></span>
+        <span><i class="fa-brands fa-instagram"></i></span>
+    </span>
+    </div><!--#nav-bar-->
+    
+    <hr>
+<div id="main">
+    
+    <h2>dinner hours</h2>
+    Tuesday - Saturday, 5 - 10 pm<br>
+    last reservation is at 8:30 pm<br>
+    closed Sunday and Monday<br>
+
+    <h2>takeout and curbside pickup</h2>
+    Our dinner menu below is available for takeout and curbside<br>
+    pickup. Please preorder if possible by phone (203.780.8925).<br>
+    During special days we can only take a limited amount of takeout<br>
+    orders due to volume.<br>
+
+    <h2>CHEF'S TASTING MENU <span>$89 / person</span><br>
+        no substitutions or modifications<br>
+        A minimum of 24 hours notice is required
+    </h2>
+    six courses / reservations and full table participation required<br>
+    optional wine pairing available $47 / person<br>
+    available Tuesday through Thursday<br>
+    Please let us know in advance about any food restrictions or<br>
+    allergies.<br>
+    Tax and gratuity not included.
+
+    <h2>DINNER MENU</h2>
+
+    <div style="width:12cm;">
+
+    <h3>appetizers</h3>
+    <ul>
+        <% for(let i=0; i<info.length;i++){ %>
+            <% if (info[i].category == "DINNER: Cured Meats" && info[i].sequence != "0"){ %>
+            <li class="special">
+                <div>
+                <span class="name"><%= info[i].name %></span><br>
+                <span><%= info[i].description %></span>
+                </div>
+
+                <span class="price"><%= info[i].price %></span>
+            </li>
+            <% } %>
+        <% } %>
+    </ul>
+    <ul>
+        <% for(let i=0; i<info.length;i++){ %>
+            <% if (info[i].category == "DINNER: Appetizer" && info[i].sequence != "0"){ %>
+            <li class="special">
+                <div>
+                <span class="name"><%= info[i].name %></span><br>
+                <span><%= info[i].description %></span>
+            </div>
+                <span class="price"><%= info[i].price %></span>
+            </li>
+            <% } %>
+        <% } %>
+    </ul>
+    
+
+    <h3>main courses</h3>
+    <ul>
+        <% for(let i=0; i<info.length;i++){ %>
+            <% if (info[i].category == "DINNER: Entrée" && info[i].sequence != "0"){ %>
+            <li class="special">
+                <div>
+                <span class="name"><%= info[i].name %></span><br>
+                <span><%= info[i].description %></span>
+            </div>
+                <span class="price"><%= info[i].price %></span>
+            </li>
+            <% } %>
+        <% } %>
     </ul>
 
-    <h2>Add New Special:</h2>
+    <h3>sides</h3>
+    <ul>
+        <% for(let i=0; i<info.length;i++){ %>
+            <% if (info[i].category == "DINNER: Sides Left" && info[i].sequence != "0"){ %>
+            <li class="special">
+                <div>
+                <span class="name"><%= info[i].name %></span><br>
+                <span><%= info[i].description %></span>
+            </div>
+                <span class="price"><%= info[i].price %></span>
+            </li>
+            <% } %>
+        <% } %>
+    </ul>
+    <ul>
+        <% for(let i=0; i<info.length;i++){ %>
+            <% if (info[i].category == "DINNER: Sides Right" && info[i].sequence != "0"){ %>
+            <li class="special">
+                <div>
+                <span class="name"><%= info[i].name %></span><br>
+                <span><%= info[i].description %></span>
+            </div>
+                <span class="price"><%= info[i].price %></span>
+            </li>
+            <% } %>
+        <% } %>
+    </ul>
 
-    <form action="/addSpecial" method="POST">
-        <input type="text" placeholder="Category" name="category"><br>
-        <input type="text" placeholder="Name" name="name"><br>
-        <input type="text" placeholder="Description" name="description"><br>
-        <input type="text" placeholder="Price" name="price"><br>
-        <input type="text" placeholder="Allergies" name="allergies"><br>
-        <input type="submit" id="update-button" value="Create">
-    </form>
+    <h3>specials</h3>
 
-    <h2>Edit Exisiting Special:</h2>
+    <ul>
+        <% for(let i=0; i<info.length;i++){ %>
+            <% if (info[i].category == "SPECIALS: Appetizer" && info[i].sequence != "0"){ %>
+            <li class="special">
+                <div>
+                <span class="name"><%= info[i].name %></span><br>
+                <span><%= info[i].description %></span>
+            </div>
+                <span class="price"><%= info[i].price %></span>
+            </li>
+            <% } %>
+        <% } %>
+    </ul>
+    <ul>
+        <% for(let i=0; i<info.length;i++){ %>
+            <% if (info[i].category == "SPECIALS: Entrée" && info[i].sequence != "0"){ %>
+            <li class="special">
+                <div>
+                <span class="name"><%= info[i].name %></span><br>
+                <span><%= info[i].description %></span>
+            </div>
+                <span class="price"><%= info[i].price %></span>
+            </li>
+            <% } %>
+        <% } %>
+    </ul>
+    <ul>
+        <% for(let i=0; i<info.length;i++){ %>
+            <% if (info[i].category == "SPECIALS: Dessert" && info[i].sequence != "0"){ %>
+            <li class="special">
+                <div>
+                <span class="name"><%= info[i].name %></span><br>
+                <span><%= info[i].description %></span>
+            </div>
+                <span class="price"><%= info[i].price %></span>
+            </li>
+            <% } %>
+        <% } %>
+    </ul>
 
-    <form action="/editSpecial" method="POST">
-        <div name="_id" id="display-ID"></div>
-        <input type="text" id="edit-id" placeholder="ID#" name="_id"><br>
-        <input type="text" id="edit-category" placeholder="Category" name="category"><br>
-        <input type="text" id="edit-name" placeholder="Name" name="name"><br>
-        <input type="text" id="edit-description" placeholder="Description" name="description"><br>
-        <input type="text" id="edit-price" placeholder="Price" name="price"><br>
-        <input type="text" id="edit-allergies" placeholder="Allergies" name="allergies"><br>
-        <input type="submit" value="Update">
-    </form>
+
+    </div><!--#div w:12cm-->
+    
 
 
-    <h2></h2>
+    <br><br><br>
+    we do our best to keep this information accurate and up to date, <br>
+    but because we make frequent adjustments, based on season and<br>
+    availability, our menus are subject to change.
 
-    <script src="main.js"></script>
+</div><!--#main-->
+
+    <hr style="margin: 30px 0">
+
+<div id="footer">
+    <span id="socials-footer">
+        <span><i class="fa-brands fa-facebook-f"></i></span>
+        <span><i class="fa-brands fa-twitter"></i></span>
+        <span><i class="fa-brands fa-instagram"></i></span>
+    </span>
+    <br>
+    39 high street, new haven, connecticut | 203.780.8925<br><br>
+
+    Tuesday-Saturday, 5-10 pm (last seating at 8:30)<br><br>
+
+    In the heart of downtown New Haven, Olea offers an innovative<br>
+    interpretation of Spanish and Mediterranean cuisine. Chef Manuel<br>
+    Romero and his team explore these flavors in their food, wine, and<br>
+    cocktails, locally sourcing many products and importing specialty<br>
+    items from the Mediterranean region.<br><br>
+
+    copyright 2014-2023 by olea. graphic design by Rebecca<br>
+    Martz<br><br><br>
+
+</div><!--#footer-->
+
+</div><!--#main-->
+
+</div><!--#wrapper-->
 
 </body>
 </html>
