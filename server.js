@@ -223,7 +223,7 @@ app.post('/saveDinnerMenuChanges', async (request,response)=>{
 
 
     // setTimeout(()=>response.redirect('/dinner'),250)
-    response.redirect('/dinner')    
+    response.redirect(request.get('referer'))
 })
 app.get('/specialsLayout', (request, response) =>{
     db.collection('Specials').find().sort({sequence:1}).toArray()
@@ -275,7 +275,7 @@ app.get('/specialsPrintPreview', (request, response) =>{
     })
 })
 app.get('/dinnerPrintPreview', (request, response) =>{
-    db.collection('Specials').find().toArray()
+    db.collection('Specials').find().sort({sequence:1}).toArray()
     .then(data => {
         response.render('dinnerPrintPreview.ejs', {info: data})
     })
